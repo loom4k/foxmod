@@ -1,24 +1,13 @@
-import { Client, Collection } from 'discord.js'
-import { config } from 'dotenv'
-import { GatewayServer, SlashCreator } from 'slash-create'
-import { join } from 'path'
+import { Core } from "./struct/Core";
+import express from "express";
+import { CONFIG } from "./config";
+import * as pogger from "pogger";
+const client = new Core();
+const app = express();
 
-config()
-const client = new Client()
-
-client.once('ready', () => {
-    console.log('boom yes')
-    
-    new SlashCreator({
-        applicationID: client.user!.id,
-        token: process.env.TOKEN,
-    }).withServer(
-        new GatewayServer(
-            handler => client.ws.on('INTERACTION_CREATE' as any, handler)
-        )
-    ).registerCommandsIn(
-        join(__dirname, "commands")
-    ).syncCommands()
-})
-
-client.login(process.env.TOKEN)
+app.use((req, res) => res.sendStatus(200));
+client.connect().then(() => {
+	app.listen(CONFIG.PORT, "0.0.0.0", () => {
+		pogger.success("Express server started");
+	});
+});

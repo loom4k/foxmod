@@ -18,19 +18,27 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Core_1 = require("./struct/Core");
-const express_1 = __importDefault(require("express"));
-const config_1 = require("./config");
 const pogger = __importStar(require("pogger"));
-const client = new Core_1.Core();
-const app = express_1.default();
-app.use((req, res) => res.sendStatus(200));
-client.connect().then(() => {
-    app.listen(config_1.CONFIG.PORT, "0.0.0.0", () => {
-        pogger.success("Express server started");
-    });
-});
+const config_1 = require("../config");
+const ReadyEvent = {
+    name: "ready",
+    execute: async (client) => {
+        setInterval(async () => {
+            await client.user?.setPresence({
+                activity: {
+                    name: random(config_1.CONFIG.PRESENCE.activity.name),
+                    type: random(config_1.CONFIG.PRESENCE.activity.type),
+                },
+                status: random(config_1.CONFIG.PRESENCE.status),
+                afk: config_1.CONFIG.PRESENCE.afk,
+                shardID: config_1.CONFIG.PRESENCE.shardID,
+            });
+        }, 15000);
+        pogger.success(`Logged in as ${client.user?.tag}!`);
+    },
+};
+function random(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
+exports.default = ReadyEvent;

@@ -1,19 +1,15 @@
-import { SlashCommand, SlashCreator, CommandContext } from 'slash-create'
+import { ICommand } from "my-module";
 
-export default class PingCommand extends SlashCommand {
+const PingCommand: ICommand = {
+	name: "ping",
+	description: "Shows the bot's ping.",
+	options: [],
+	async execute({ client, interaction }) {
+		return client.send(
+			interaction,
+			`:ping_pong: Pong! ${client.ws.ping}ms`,
+		);
+	},
+};
 
-    constructor(creator: SlashCreator) {
-      super(creator, {
-        // options
-        name: "ping", // command name
-        description: "Get our API ping and reply with pong!",
-        guildIDs: ["820397193310634004"]
-      });
-      // slash-create requires this
-      this.filePath = __filename;
-    }
-  
-    async run(ctx: CommandContext) {
-      ctx.send(`My \`ping\` is **10**ms`)
-    }
-}
+export default PingCommand;
