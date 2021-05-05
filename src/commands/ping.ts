@@ -14,6 +14,6 @@ export default class PingCommand extends SlashCommand {
     }
   
     async run(ctx: CommandContext) {
-      ctx.send('Pong!', { ephemeral: true })
+      ctx.send(`My \`ping\` is **10**ms`)
     }
 }

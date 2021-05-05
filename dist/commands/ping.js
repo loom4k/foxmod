@@ -13,7 +13,7 @@ class PingCommand extends slash_create_1.SlashCommand {
         this.filePath = __filename;
     }
     async run(ctx) {
-        ctx.send('Pong!', { ephemeral: true });
+        ctx.send(`My \`ping\` is **10**ms`);
     }
 }
 exports.default = PingCommand;
