@@ -66,7 +66,7 @@ class Core extends discord_js_1.Client {
                 description: command.description,
                 options: command.options,
             };
-            await makeAPIRequest_1.makeAPIRequest(`/applications/${config_1.CONFIG.CLIENT_ID}/commands`, "POST", body);
+            await makeAPIRequest_1.makeAPIRequest(`/applications/${config_1.CONFIG.CLIENT_ID}/guilds/${process.env.DEV_GUILD}/commands`, "POST", body);
             this.commands.set(command.name, command);
             pogger.success(`Command loaded: ${command.name}`);
         }

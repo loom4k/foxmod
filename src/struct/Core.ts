@@ -80,7 +80,7 @@ export class Core extends Client {
 				options: command.options,
 			};
 			await makeAPIRequest(
-				`/applications/${CONFIG.CLIENT_ID}/commands`,
+				`/applications/${CONFIG.CLIENT_ID}/guilds/${process.env.DEV_GUILD}/commands`,
 				"POST",
 				body,
 			);
