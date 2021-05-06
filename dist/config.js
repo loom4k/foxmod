@@ -13,16 +13,15 @@ exports.CONFIG = {
     PRESENCE: {
         activity: {
             name: [
-                "STATUS 1",
-                "STATUS 2",
+                "baby foxes",
+                "devs sweating",
             ],
-            type: ["WATCHING", "LISTENING", "COMPETING"],
+            type: ["WATCHING"],
         },
-        status: ["idle", "online", "dnd"],
+        status: ["dnd"],
         afk: false,
         shardID: 0,
     },
-    DEFAULT_RANK_COLOR: "ffffff",
     API_URL: "https://discord.com/api/v8",
     SUPPORT_SERVER: "https://discord.gg/cdyxFd2d6h",
 };

@@ -14,16 +14,15 @@ export const CONFIG = {
 	PRESENCE: {
 		activity: {
 			name: [
-				"STATUS 1",
-				"STATUS 2",
+				"baby foxes",
+				"devs sweating",
 			],
-			type: ["WATCHING", "LISTENING", "COMPETING"] as ActivityType[],
+			type: ["WATCHING"] as ActivityType[],
 		},
-		status: ["idle", "online", "dnd"] as PresenceStatusData[],
+		status: ["dnd"] as PresenceStatusData[],
 		afk: false,
 		shardID: 0,
 	},
-	DEFAULT_RANK_COLOR: "ffffff",
 	API_URL: "https://discord.com/api/v8",
 	SUPPORT_SERVER: "https://discord.gg/cdyxFd2d6h",
 };
