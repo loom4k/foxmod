@@ -1,6 +1,6 @@
 # FoxMod
 
-FoxMod is a open-source Discord moderation bot built on the Interaction System and Discord Slash Commands. This project was built and is maintained by `loom4kwasfat#6020`
+FoxMod is a open-source Discord moderation bot built on the Interaction System and Discord Slash Commands. This project was built and is maintained by `loom4kwasfat#6020`. Credit to [Barbarbar38](https://github.com/barbarbar338) for the frame of the project <3
 
 ### Contribute
 
